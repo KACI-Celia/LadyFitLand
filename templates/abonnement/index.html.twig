@@ -23,8 +23,8 @@
                 <td>{{ abonnement.prix }}</td>
                 <td>{{ abonnement.description }}</td>
                 <td>
-                    <a href="{{ path('app_abonnement_show', {'id': abonnement.id}) }}">show</a>
-                    <a href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}">edit</a>
+                    <a href="{{ path('app_abonnement_show', {'id': abonnement.id}) }}">Afficher</a>
+                    <a href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_abonnement_new') }}">Create new</a>
+    <a href="{{ path('app_abonnement_new') }}">Ajouter</a>
 {% endblock %}

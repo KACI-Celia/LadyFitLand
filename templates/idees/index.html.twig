@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Idees index{% endblock %}
+
+{% block body %}
+    <h1>Idees index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelleidee</th>
+                <th>Commentaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for idee in idees %}
+            <tr>
+                <td>{{ idee.id }}</td>
+                <td>{{ idee.libelleidee }}</td>
+                <td>{{ idee.commentaire }}</td>
+                <td>
+                    <a href="{{ path('app_idees_show', {'id': idee.id}) }}">show</a>
+                    <a href="{{ path('app_idees_edit', {'id': idee.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_idees_new') }}">Create new</a>
+{% endblock %}

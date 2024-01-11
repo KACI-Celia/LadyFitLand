@@ -1,127 +1,114 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        
-        <link rel="stylesheet" href="{{asset('css/style.css')}}">
-        
-        {% block stylesheets %}{% endblock %}   
-        
 
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
 
-        
-    </head>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <body>
-    {#
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-                <div class="container-fluid">
-                <a class="navbar-brand" href="{{path('page_principale')}}">LadyFitLand</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
+		<link rel="stylesheet" href="{{asset('css/style.css')}}"> {% block stylesheets %}{% endblock %}
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
 
-                <li class="nav-item active">
-                <a class="nav-link" href="{{path('abonnement_type')}}">Abonnement <span class="sr-only"></span></a>
-                </li>
+		{% block importmap %}
+			{{ importmap('app') }}
+		{% endblock %}
 
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{path('espaces_salle')}}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Espaces
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{path('espace_musculation')}}">Musculation</a>
-                <a class="dropdown-item" href="#">Cours collectifs</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{path('espace_detente')}}">Détente</a>
-                </div>
-                </li>
 
-                <li class="nav-item">
-                <a class="nav-link" href="#">Connexion</a>
-                </li>
+	</head>
 
-                <li class="nav-item">
-                <a class="nav-link inscription" href="{{path('inscription_abn')}}">Inscription</a>
-                </li>
-            </ul>
-            </div>
-        </nav>
-    #}
-        
+	<body>
 
-        
-    
+		<main nav class="navbar navbar-expand-lg navbar-light bgNav">
 
-    <main nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{{path('page_principale')}}">LadyFitLand</a>
 
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{path('page_principale')}}">LadyFitLand</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{path('app_abonnement_index')}}">Abonnement</a>
+						</li>
 
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Abonnement</a>
-            </li>
 
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="{{path('espaces_salle')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Espaces
-            </a>
+						{#<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="{{path('espaces_salle')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Espaces
+						</a>#}
 
-            <ul class="dropdown-menu">
-                <li>
-                <a class="dropdown-item" href="{{path('espace_musculation')}}">Musculation</a>
-                </li>
-                <li>
-                <a class="dropdown-item" href="{{path('espace_coursCollectifs')}}">Cours collectifs</a>
-                </li>
+					<li>
+							<div class="btn-group">
+								<a class=" dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Espaces
+								</a>
+								<ul class="dropdown-menu">
+									
+										<li>
+											<a class="dropdown-item" href="{{path('espace_musculation')}}">Musculation</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="{{path('espace_coursCollectifs')}}">Cours collectifs</a>
+										</li>
 
-                <li>
-                <a class="dropdown-item" href="{{path('espace_detente')}}">Détente</a>
-                </li>
-            </ul>
-        </li>
+										<li>
+											<a class="dropdown-item" href="{{path('espace_detente')}}">Détente</a>
+										</li>
+									
+								</ul>
+							</div>
+						</li>
 
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Inscription</a>
-                </li>
+						<li>
+							<div class="btn-group">
+								<a class="" type="button">
+									Dashboard
+								</a>
 
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Connexion</a>
-            </li>
-            </ul>
-            </div>
-        </div>
-    </nav>
+								<a type="button" class=" dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+									<span class="visually-hidden">Toggle Dropdown</span>
+								</a>
 
-    <main class="col-md-10 mx-auto p-2">
+								<ul class="dropdown-menu">
+                                    
+									<a class="nav-link dropdown-toggle" href="{{path('espaces_salle')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										Espaces
+									</a>
 
-        <h1 class="text-center text-dark my-2">{% block h1 %}{% endblock %}</h1>
+									<ul class="dropdown-menu">
+										<li>
+											<a class="dropdown-item" href="">Musculation</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="">Cours collectifs</a>
+										</li>
 
-        {% block body %}{% endblock %}
+										<li>
+											<a class="dropdown-item" href="">Détente</a>
+										</li>
+								</li>
+							</ul>
+						</li>
+					</div>
+				</li>
 
-        </main>
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{path('app_register')}}">Inscription</a>
+				</li>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{path('app_login')}}">Connexion</a>
+				</li>
+			</ul>
 
-    <script src="{{asset('js/script.js')}}"></script>
-
-    {% block javascripts %}{% endblock %}
-
-    </body>
-
-</html>
+		</div>
+	</body>
+</html></div></nav></main><main class="col-md-10 mx-auto p-2"><h1 class="text-center text-dark my-2"> {% block h1 %}{% endblock %}</h1>{% block body %}{% endblock %}</main><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script src="{{asset('js/script.js')}}"></script>{% block javascripts %}{% endblock %}</body></html>

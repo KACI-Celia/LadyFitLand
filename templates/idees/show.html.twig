@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Idees{% endblock %}
+
+{% block body %}
+    <h1>Idees</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ idee.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelleidee</th>
+                <td>{{ idee.libelleidee }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ idee.commentaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_idees_index') }}">back to list</a>
+
+    <a href="{{ path('app_idees_edit', {'id': idee.id}) }}">edit</a>
+
+    {{ include('idees/_delete_form.html.twig') }}
+{% endblock %}

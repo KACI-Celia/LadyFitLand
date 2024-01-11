@@ -28,6 +28,9 @@ class SalleDeSport
     #[ORM\Column(length: 10, nullable: true)]
     private ?string $heureFermeture = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresseSalle = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class SalleDeSport
     public function setHeureFermeture(?string $heureFermeture): static
     {
         $this->heureFermeture = $heureFermeture;
+
+        return $this;
+    }
+
+    public function getAdresseSalle(): ?string
+    {
+        return $this->adresseSalle;
+    }
+
+    public function setAdresseSalle(?string $adresseSalle): static
+    {
+        $this->adresseSalle = $adresseSalle;
 
         return $this;
     }
