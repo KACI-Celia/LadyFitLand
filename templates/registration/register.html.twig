@@ -8,10 +8,18 @@
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.prenomUser) }}
+        {{ form_row(registrationForm.nomUser) }}
+        {{form_row(registrationForm.dateNaissanceUser)}}
+        {{form_row(registrationForm.adresseUser)}}
+        {{form_row(registrationForm.telUser)}}
         {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.conirmationEmail) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
+        
+
         {{ form_row(registrationForm.agreeTerms) }}
 
         <button type="submit" class="btn">Register</button>

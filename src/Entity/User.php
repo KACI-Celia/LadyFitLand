@@ -37,7 +37,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $prenomUser = null;
 
     #[ORM\Column(nullable: true)]
-    private ?float $telUser = null;
+    private ?int $telUser = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateNaissanceUser = null;
@@ -50,6 +50,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $statutUser = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $conirmationEmail = null;
 
     public function getId(): ?int
     {
@@ -201,6 +204,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setStatutUser(?string $statutUser): static
     {
         $this->statutUser = $statutUser;
+
+        return $this;
+    }
+
+    public function getConirmationEmail(): ?string
+    {
+        return $this->conirmationEmail;
+    }
+
+    public function setConirmationEmail(?string $conirmationEmail): static
+    {
+        $this->conirmationEmail = $conirmationEmail;
 
         return $this;
     }
