@@ -51,8 +51,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $statutUser = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $conirmationEmail = null;
 
     public function getId(): ?int
     {
@@ -208,15 +206,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getConirmationEmail(): ?string
-    {
-        return $this->conirmationEmail;
-    }
-
-    public function setConirmationEmail(?string $conirmationEmail): static
-    {
-        $this->conirmationEmail = $conirmationEmail;
-
-        return $this;
-    }
 }

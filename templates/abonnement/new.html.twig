@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Abonnement{% endblock %}
+{% block h1 %}Ajouter un Abonnement{% endblock %}
+{% block title %}Ajouter un Abonnement{% endblock %}
 
 {% block body %}
-    <h1>Create new Abonnement</h1>
 
+    <a class="btn btn-success" href="{{ path('app_abonnement_index') }}">Retour</a>
+    
     {{ include('abonnement/_form.html.twig') }}
 
-    <a href="{{ path('app_abonnement_index') }}">Retour à la liste</a>
+    
 {% endblock %}

@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -31,12 +32,12 @@ class RegistrationFormType extends AbstractType
                 'label'=>'Nom'
             ])
 
-            ->add('dateNaissanceUser', BirthdayType::class,[
-                'label'=>'Date de naissance',
-                'widget'=>'single_text',
-                'format'=>'dd-MM-yyyy',
-                'html5' => false, // cette phrase permet d'eviter l'erreur par rapport au format de la date
-            ])
+            // ->add('dateNaissanceUser', BirthdayType::class,[
+            //     'label'=>'Date de naissance',
+            //     'widget'=>'single_text',
+            //     'format'=>'dd-MM-yyyy',
+            //     'html5' => false, // cette phrase permet d'eviter l'erreur par rapport au format de la date
+            // ])
 
             ->add('adresseUser', TextType::class,[
                 'label'=>'Adresse'
@@ -49,12 +50,14 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class,[
                 'label'=>'Email'
             ])
-            ->add('conirmationEmail', RepeatedType::class,[
-                'type'=>EmailType::class,
-                'first_options'=>['label'=>'Confirmation Email']
+            
+            ->add('dateNaissanceUser', DateType::class, [
+                'widget' => 'choice',
+                'input'  => 'datetime_immutable',
+                'years'=>range(date('Y')-120,date('Y'))
+                
             ])
 
-            
             ->add('plainPassword', PasswordType::class, [
                                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
