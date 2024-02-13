@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espaces{% endblock %}
+
+{% block body %}
+    <h1>Espaces</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>LibelleEspace</th>
+                <th>DescriptionEspace</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for espace in espaces %}
+            <tr>
+                <td>{{ espace.id }}</td>
+                <td>{{ espace.libelleEspace }}</td>
+                <td>{{ espace.descriptionEspace }}</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_espaces_admin_show', {'id': espace.id}) }}">show</a>
+                    <a class="btn btn-warning mt-2" href="{{ path('app_espaces_admin_edit', {'id': espace.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Pas de résultat</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_espaces_admin_new') }}">Ajouter</a>
+{% endblock %}

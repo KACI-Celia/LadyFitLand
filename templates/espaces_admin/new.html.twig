@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Espaces{% endblock %}
+
+{% block body %}
+    <h1>Ajouter des Espaces</h1>
+
+    {{ include('espaces_admin/_form.html.twig') }}
+
+    <a class="btn btn-dark" href="{{ path('app_espaces_admin_index') }}">Retour</a>
+{% endblock %}

@@ -13,4 +13,13 @@ class AccueilController extends AbstractController
     {
         return $this->render('accueil/accueil.html.twig', []);
     }
+
+    #[Route('Abonnements',name:'frontAbonnement')]
+    public function abonnement():Response
+    {
+        return $this->render('frontAbonnement/abonnement.html.twig');
+    }
+
+
+
 }

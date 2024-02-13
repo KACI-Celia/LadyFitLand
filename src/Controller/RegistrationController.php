@@ -18,7 +18,8 @@ class RegistrationController extends AbstractController
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
+        $form->handleRequest($request);//permet le traitement du formulaire:
+            //si le formulaire est soumis et s'il est valide(respect des contraintes)
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -28,9 +29,9 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
-            $entityManager->persist($user);
-            $entityManager->flush();
+            //entityManager est un objet de la class EntityManagerInterface(cette class pemet de rajouter/modifier/supprimer des données)
+            $entityManager->persist($user);//persist:permet d'inserer l'objet $user en BDD
+            $entityManager->flush();//->executer
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute('app_login');

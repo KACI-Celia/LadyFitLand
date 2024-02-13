@@ -29,6 +29,11 @@ class EspacesController extends AbstractController
         return $this->render('espaces/coursCollectifs.html.twig', []);
     }
 
+    #[Route('/espaces/cardio', name: 'espace_cardio')]
+    public function cardio(): Response
+    {
+        return $this->render('espaces/cardio.html.twig', []);
+    }
 
     #[Route('/espaces/detente', name: 'espace_detente')]
     public function detente(): Response

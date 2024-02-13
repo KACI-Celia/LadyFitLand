@@ -18,26 +18,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180, unique: true)]
-    private ?string $email = null;
-
     #[ORM\Column]
     private array $roles = [];
 
     /**
      * @var string The hashed password
      */
-    #[ORM\Column]
-    private ?string $password = null;
-
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $nomUser = null;
 
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $prenomUser = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $telUser = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateNaissanceUser = null;
@@ -48,25 +39,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresseFacturationUser = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
-    private ?string $statutUser = null;
+    #[ORM\Column(nullable: true)]
+    private ?int $telUser = null;
 
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $email = null;
+
+    #[ORM\Column]
+    private ?string $password = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): static
-    {
-        $this->email = $email;
-
-        return $this;
     }
 
     /**
@@ -98,30 +82,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): static
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials(): void
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
-
     public function getNomUser(): ?string
     {
         return $this->nomUser;
@@ -142,18 +102,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPrenomUser(?string $prenomUser): static
     {
         $this->prenomUser = $prenomUser;
-
-        return $this;
-    }
-
-    public function getTelUser(): ?float
-    {
-        return $this->telUser;
-    }
-
-    public function setTelUser(?float $telUser): static
-    {
-        $this->telUser = $telUser;
 
         return $this;
     }
@@ -194,16 +142,51 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getStatutUser(): ?string
+    public function getTelUser(): ?float
     {
-        return $this->statutUser;
+        return $this->telUser;
     }
 
-    public function setStatutUser(?string $statutUser): static
+    public function setTelUser(?float $telUser): static
     {
-        $this->statutUser = $statutUser;
+        $this->telUser = $telUser;
 
         return $this;
     }
 
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
 }

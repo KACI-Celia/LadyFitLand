@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/cours')] //ceci est un prefix, toutes les routes rattachées commencent par ce prefix//
+#[Route('/admin/cours')] //ceci est un prefix, toutes les routes rattachées commencent par ce prefix//
 class CoursController extends AbstractController
 {
     #[Route('/', name: 'app_cours_index', methods: ['GET'])]
