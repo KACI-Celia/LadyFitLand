@@ -3,8 +3,56 @@
 {% block h1 %}{% endblock %}
 
 {% block body %}
+<div class"container-fluid bg-size-cover">
+    <div class="mt-5 w-100% bg-light text-center">
+            <h1>CHOISIS L'ABONNEMENT QUI TE CONVIENT</h1>
+            <p>Atteins tes objectifs sportifs dans ta salle 100% féminine LadyFitLand. Que tu sois débutante ou confirmée, retrouve des espaces Cardio, Musculation, Cross-training et Cours Collectifs pour effectuer tous tes entraînements !</p>
+        </div>
+    </div>
 
-
+<section class="p-5" id="typesAbonements">
+    <div class="container">
+            <!-- 3.2 row-cols est une classe BS qui permet de définir directement dans une row le nombre de colonne que l'on veut en fonction de la taille de l'écran (ex pour row-cols-1 nous aurons une seule colonne dès le mode mobile et pour toutes les autres largeurs, si l'on ajoute row-cols-md-2, nous aurons deux colonnes dès le mode tablette) -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 ">
+                <div class="col mb-2">
+                    <!-- card types abonnement -->
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Classic</h5>
+                            <h2>25,99€</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam mollitia molestias ipsum adipisci maxime?</p>
+                            <div class="d-flex justify-content-around">
+                            <a href="#" class="btn btn-outline-secondary btn-sm">Je choisis cette offre</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">DUO</h5>
+                            <h2>45,00€</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam mollitia molestias ipsum adipisci maxime?</p>
+                            <div class="d-flex justify-content-around">
+                            <a href="#" class="btn btn-outline-secondary btn-sm">Je choisis cette offre</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">VIP</h5>
+                            <h2>49,99€</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam mollitia molestias ipsum adipisci maxime?</p>
+                            <div class="d-flex justify-content-around">
+                            <a href="#" class="btn btn-outline-secondary bg-light btn-sm border-bold">Je choisis cette offre</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
 {#insertion des cardes des types d'abonement avec BS#}
 
 {% endblock %}

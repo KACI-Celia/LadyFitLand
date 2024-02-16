@@ -4,8 +4,9 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -16,8 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Validator\Constraints\Regex;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -49,16 +49,6 @@ class RegistrationFormType extends AbstractType
                     ])
                 ]
                 ])
-
-            //->add('dateNaissanceUser', BirthdayType::class,[
-                //'label'=>'Date de naissance',
-                //'row_attr'=>[
-                  //  'class'=>'shadow p-3 bg-white'
-                //],
-                //'widget'=>'single_text',
-            //     'format'=>'dd-MM-yyyy',
-            //     'html5' => false, // cette phrase permet d'eviter l'erreur par rapport au format de la date
-            //])
 
             ->add('adresseUser', TextType::class,[
                 'label'=>'Adresse',
@@ -102,6 +92,9 @@ class RegistrationFormType extends AbstractType
                 'constraints'=>[
                     new NotBlank([
                         'message'=>'Veuillez renseigner votre adresse mail'
+                    ]),
+                    new Email([
+                        'message'=>'The email "{{ value }}" is not a valid email.'// a verifier
                     ])
                 ]
             ])
@@ -136,8 +129,11 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
 
+            
+
+
             ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
+                'mapped' => false,//permet de dire que cette propriete n'existe pas dans la bdd
                 'label'=>'Accepter les conditions',
                 'row_attr'=>[
                     'class'=>'shadow p-3 m-0'

@@ -1,3 +1,4 @@
+
 .img-accueil
     {
         width: 100%;
@@ -5,6 +6,7 @@
         display: block;
         margin: auto;
         }
+
 
         
 .img_espaces
@@ -18,7 +20,7 @@
 
 .img_coursCollectifs
 {
-    max-width: 70%;
+    max-width: auto;
     height: 80vh;
     display: block;
     margin: auto;
@@ -42,6 +44,9 @@
 
 
 body{
+    margin :0;
+    padding: 0;
+    height: 100vh;
     background-color:white;
 }
 

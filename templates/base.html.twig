@@ -6,17 +6,13 @@
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
-
-		<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 		{#lien CDN de BS#}
-
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		{#link fichier style.css du dossier public/CSS#}
 		<link rel="stylesheet" href="{{asset('css/style.css')}}"> {% block stylesheets %}{% endblock %}
-
-
 		{#{% block importmap %}
-					{{ importmap('app') }}
-				{% endblock %} voir c'est quoi ça#}
+									{{ importmap('app') }}
+								{% endblock %} voir c'est quoi ça#}
 		</head>
 
 		<body>
@@ -55,13 +51,13 @@
 							</li>
 
 							{#
-								Si l'utilisateur est connecté alors app.user retourne un objet de l'entity User
-								Si l'utilisateur n'est pas connecté alors app.user retourne null
-							#}
+																						Si l'utilisateur est connecté alors app.user retourne un objet de l'entity User
+																						Si l'utilisateur n'est pas connecté alors app.user retourne null
+																					#}
 
-							{% if app.user %} 
+							{% if app.user %}
 
-								{% if is_granted('ROLE_ADMIN') %}
+								{% if is_granted('ROLE_ADMIN') %},
 									{# PARTIE ADMIN #}
 									<li>
 										<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,10 +76,11 @@
 										</ul>
 									</li>
 								{% endif %}
-								
+								{#si l'Admin est connecté#}
 								<li class="nav-item">
 									<a class="nav-link" href="{{path('app_logout')}}">Déconnexion</a>
 								</li>
+								{#Interface User non connecté#}
 							{% else %}
 								<li class="nav-item">
 									<a class="nav-link" href="{{path('app_register')}}">Inscription</a>
@@ -92,26 +89,30 @@
 									<a class="nav-link" href="{{path('app_login')}}">Connexion</a>
 								</li>
 							{% endif %}
-							
+
 						</ul>
 					</div>
 				</div>
 			</nav>
-			
+
 			<main class="col-md-10 mx-auto p-2">
+			<h1 class="text-center text-dark my-2">{% block h1 %}{% endblock %}</h1>
+			{% block body %}{% endblock %}
+			</main>
 
-				<h1 class="text-center text-dark my-2"> {% block h1 %}{% endblock %}
-					</h1>
-
-					{% block body %}{% endblock %}
-
-				</main>
-
-				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 				{#lien CDN js de BS#}
-
-				<script src="{{asset('js/script.js')}}"></script>
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 				{#Likn avec le fichier JS du dossier JS public#}
+				<script src="{{asset('js/script.js')}}"></script>
 				{% block javascripts %}{% endblock %}
+
+				<footer class="footer bg-dark mt-5 p-4 text-center text-white justify-content-center">
+				<div class="footer text-white align-item-center">
+				<p>Contact</p>
+				<p>Adresse de la salle</p>
+				<p>Mention légales</p>
+				</div>
+				</footer>
 			</body>
+			
 		</html>

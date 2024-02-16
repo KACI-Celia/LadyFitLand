@@ -25,8 +25,8 @@
                 <td>{{ abonnement.prix }}</td>
                 <td>{{ abonnement.description }}</td>
                 <td>
-                    <a class="btn btn-warning" href="{{ path('app_abonnement_show', {'id': abonnement.id}) }}">Afficher</a>
-                    <a class="btn btn-secondary" href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}">Modifier</a>
+                    <a class="btn btn-secondary mb-2" href="{{ path('app_abonnement_show', {'id': abonnement.id}) }}">Afficher</a>
+                    <a class="btn btn-warning" href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

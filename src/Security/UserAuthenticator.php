@@ -38,7 +38,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),            ]
         );
     }
-
+    //l'objet $token contient l'objet $user
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
@@ -46,7 +46,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('page_principale'));
+        return new RedirectResponse($this->urlGenerator->generate('page_principale'));//redirection sur la page principale
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

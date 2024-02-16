@@ -2,6 +2,18 @@
 
 {% block title %}Cours{% endblock %}
 
+{% block stylesheets %}
+{#lien main.min.css depuis FullCalendar#}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.css" integrity="sha256-16PDMvytZTH9heHu9KBPjzrFTaoner60bnABykjNiM0=" crossorigin="anonymous">
+        <style>
+            #calendrier{
+
+            }
+        
+        </style>
+
+{% endblock %}
+
 {% block body %}
     <h1>Cours</h1>
 
@@ -33,8 +45,8 @@
                 <td>{{ cour.coach }}</td>
                 <td>{{ cour.instructions }}</td>
                 <td>
-                    <a href="{{ path('app_cours_show', {'id': cour.id}) }}">Afficher</a>
-                    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}">Modifier</a>
+                    <a class="btn btn-secondary mb-2" href="{{ path('app_cours_show', {'id': cour.id}) }}">Afficher</a>
+                    <a class="btn btn-warning" href="{{ path('app_cours_edit', {'id': cour.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -46,4 +58,60 @@
     </table>
 
     <a class="btn btn-success" href="{{ path('app_cours_new') }}">Ajouter</a>
+
+
+    <div id="calendrier"></div>
 {% endblock %}
+
+{% block javascripts %} {#CDN main.js despuis fullCalendar#}
+			
+{#fullCaledar backOffice#}
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.js" integrity="sha256-PL1mKrYeZkM5SsJ5nydN6463HLkV918bgDdYL0I5Z+k=" crossorigin="anonymous"></script>
+                <script>
+
+                window.onload = () => {
+
+                    let calendrier = document.getElementById('calendrier');
+
+                    console.log(calendrier);
+
+                    let calendar = new FullCalendar.Calendar(calendrier, {
+
+                        firstDay:1,
+                        initialView: 'timeGridWeek',
+                        nowIndicator: true,
+                        locale: 'fr',
+                        timeZone: 'Europe/Paris',
+                        headerToolbar: {
+                            start: 'prev, next today',
+                            center: 'title',
+                            end: 'dayGridMonth, timeGridWeek'
+                        },
+                        slotMinTime: '06:00:00',
+                        slotMaxTime: '23:00:00',
+                        businessHours: [ // specify an array instead
+                            {
+                                daysOfWeek: [ 1, 2, 4,5 ], // Monday, Tuesday, Wednesday
+                                startTime: '08:00', // 8am
+                                endTime: '20:00' // 6pm
+                            },
+                            {
+                                daysOfWeek: [ 3 ], // Thursday, Friday
+                                startTime: '9:00', // 10am
+                                endTime: '21:00' // 4pm
+                            }
+                        ],
+                        // events: 
+
+
+                    });
+
+                    calendar.render();
+
+
+                }
+                
+                
+                </script>
+{% endblock %}
+

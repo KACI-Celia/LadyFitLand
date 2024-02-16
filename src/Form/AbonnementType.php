@@ -23,7 +23,7 @@ class AbonnementType extends AbstractType
             ->add('prix', MoneyType::class,[
                 'label'=>'Prix abonnement',
                 'attr'=>[
-                    'class' =>'bg-secondary border-light'
+                    'class' =>'bg-light border-secondary '
                 ]
                 
             ])
