@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau mot de passe{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="container">
+            <h1>Nouveau mot de passe</h1>
+
+            <div class="row mt-5">
+                <div class="col-md-6 mx-auto shadow p-4">
+                    {{ form_start(resetForm) }}
+                        <div class="mb-3">
+                            <div class="text-danger">{{form_errors(change_password_form_plainpassword_first)}}</div>
+                            <label for="change_password_form_plainpassword_first">Nouveau mot de passe</label>
+                            {{ form_widget(resetForm.plainPassword.first) }}
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-danger">{{form_errors(change_password_form_plainpassword_second)}}</div>
+                            <label for="change_password_form_plainpassword_second">Confirmation du nouveau mot de passe</label>
+                            {{ form_widget(resetForm.plainPassword.second) }}
+                        </div>
+                        <div>
+                        <input type="submit" class="btn btn-primary shadow">
+                        </div>
+                        {{ form_end(resetForm) }}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

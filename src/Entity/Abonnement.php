@@ -25,6 +25,8 @@ class Abonnement
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\OneToOne(mappedBy: 'Abonnement', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -66,5 +68,28 @@ class Abonnement
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setAbonnement(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getAbonnement() !== $this) {
+            $user->setAbonnement($this);
+        }
+
+        $this->user = $user;
+
+        return $this;
+    }
+
 
 }

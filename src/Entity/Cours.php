@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CoursRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\UX\Turbo\Attribute\Broadcast;
@@ -39,6 +41,17 @@ class Cours
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $instructions = null;
+
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'Cours')]
+    private Collection $users;
+
+    #[ORM\ManyToOne(inversedBy: 'Cours')]
+    private ?Espaces $espaces = null;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +150,45 @@ class Cours
     public function setInstructions(?string $instructions): static
     {
         $this->instructions = $instructions;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addCour($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeCour($this);
+        }
+
+        return $this;
+    }
+
+    public function getEspaces(): ?Espaces
+    {
+        return $this->espaces;
+    }
+
+    public function setEspaces(?Espaces $espaces): static
+    {
+        $this->espaces = $espaces;
 
         return $this;
     }

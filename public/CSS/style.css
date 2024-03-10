@@ -51,3 +51,8 @@ body{
 }
 
 
+.montantAbonnement{
+    font-size: larger;
+    font-weight: 500;
+    text-shadow: 20px;
+}

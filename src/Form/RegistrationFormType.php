@@ -17,7 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -61,9 +61,20 @@ class RegistrationFormType extends AbstractType
                         'message'=>'Veuillez renseigner votre adresse'
                     ])
                 ]
-                
+            ])
+            ->add('zipcode',TextType::class,[
+                'label'=>'Code postal',
+                'row_attr'=>[
+                    'class'=>'shadow p-3'
+                ],
             ])
 
+            ->add('city',TextType::class,[
+                'label'=>'Ville',
+                'row_attr'=>[
+                    'class'=>'shadow p-3'
+                ],
+            ])
             ->add('telUser', IntegerType::class,[
                 'label'=>'Numéro de téléphone',
                 'row_attr'=>[
@@ -76,7 +87,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min'=>10,
-                        'max'=>10,
+                        //'max'=>10,
                         'minMessage'=>'Le numéro de téléphone doit contenir 10 chiffres',
                         'maxMessage'=>'Le numéro de téléphone ne doit pas dépasser 10 chiffres'
                     ])
@@ -84,7 +95,7 @@ class RegistrationFormType extends AbstractType
             ])
 
             ->add('email', EmailType::class,[
-                'label'=>'Email',
+                'label'=>'E-mail',
                 'row_attr'=>[
                     'class'=>'shadow p-3'
                 ],
@@ -103,7 +114,7 @@ class RegistrationFormType extends AbstractType
                 'label'=>'Date de naissance',
                 'widget' => 'choice',
                 'input'  => 'datetime_immutable',
-                'years'=>range(date('Y')-100,date('Y')),
+                'years'=>range(date('Y')-90,date('Y')),
                 'row_attr'=>[
                     'class'=>'shadow p-3 m-0'
                 ],
@@ -115,13 +126,23 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
 
-            ->add('plainPassword', PasswordType::class, [
+            ->add('plainPassword', RepeatedType::class, [
                                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
-                'mapped' => false,
+                'type'=>PasswordType::class,
                 'row_attr'=>[
-                    'class'=>'shadow p-3'
+                    'class'=>'shadow p-3 ms-2'
                 ],
+                'mapped' => false,
+                'first_options'=>[
+                    'label'=>'Mot de passe'
+                ],
+                
+                'second_options'=>[
+                    'label'=>'Confirmez le mot de passe'
+                ],
+
+                'invalid_message' => 'Les mots de passe ne correspondent pas.',
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
@@ -129,24 +150,20 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
 
-            
-
-
             ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,//permet de dire que cette propriete n'existe pas dans la bdd
-                'label'=>'Accepter les conditions',
+                'mapped' => false,//permet de dire que cette propriete n'existe pas dans la bdd(elle n'est pas associée à une proprièté user de ce formulaire)
+                'label'=>'j\'accepte les conditions',
                 'row_attr'=>[
                     'class'=>'shadow p-3 m-0'
                 ],
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'Vous devez acceptez les conditions.',
+                        'message' => 'Veuillez accepter les conditions générales d\'utilisations.',
                     ]),
                 ],
             ])
         ;
     }
-
 
     public function configureOptions(OptionsResolver $resolver): void
     {
