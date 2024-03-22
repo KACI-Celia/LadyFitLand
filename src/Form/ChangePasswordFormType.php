@@ -11,7 +11,6 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
 use Symfony\Component\Validator\Constraints\PasswordStrength;
-use Symfony\Component\Validator\Constraints\Regex;
 
 class ChangePasswordFormType extends AbstractType
 {
@@ -20,21 +19,22 @@ class ChangePasswordFormType extends AbstractType
         $builder
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'options' => [
+                    'attr' => [
+                        'autocomplete' => 'new-password',
+                    ],
+                ],
                 'first_options' => [
                     'constraints' => [
                         new NotBlank([
-                            'message' => 'Saisissez le nouveau mot de passe',
+                            'message' => 'Please enter a password',
                         ]),
                         new Length([
                             'min' => 12,
-                            'max' => 255,
-                            'minMessage' => 'Le nouveau mot de passe doit contenir au minumum {{ limit }} caractères',
-                            'maxMessage'=>"Le nouveau mot de passe doit contenir au maximum {{ limit }} caractères",
+                            'minMessage' => 'Your password should be at least {{ limit }} characters',
                             // max length allowed by Symfony for security reasons
+                            'max' => 4096,
                         ]),
-                        new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
-                        "Le mot de passe doit contenir 14 caractères avec 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial"),
-
                         new PasswordStrength(),
                         new NotCompromisedPassword(),
                     ],
@@ -43,7 +43,7 @@ class ChangePasswordFormType extends AbstractType
                 'second_options' => [
                     'label' => 'Repeat Password',
                 ],
-                'invalid_message' => 'Le mot de passe doit être identique à sa confirmation.',
+                'invalid_message' => 'The password fields must match.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,

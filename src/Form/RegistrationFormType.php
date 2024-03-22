@@ -75,7 +75,7 @@ class RegistrationFormType extends AbstractType
                     'class'=>'shadow p-3'
                 ],
             ])
-            ->add('telUser', IntegerType::class,[
+            ->add('telUser', TextType::class,[
                 'label'=>'Numéro de téléphone',
                 'row_attr'=>[
                     'class'=>'shadow p-3'
@@ -112,7 +112,7 @@ class RegistrationFormType extends AbstractType
             
             ->add('dateNaissanceUser', DateType::class, [
                 'label'=>'Date de naissance',
-                'widget' => 'choice',
+                'widget' => 'single_text',
                 'input'  => 'datetime_immutable',
                 'years'=>range(date('Y')-90,date('Y')),
                 'row_attr'=>[

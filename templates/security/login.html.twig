@@ -3,6 +3,12 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+
+{% for notification in app.flashes('success') %}
+<div class="alert alert-success col-md-6 mx-auto text-align-center">{{notification}}</div>
+    
+{% endfor %}
+
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -22,7 +28,7 @@
         <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
     </div>
     <div class="mb-3">
-        <div class="row">
+        <div class="column">
             <div class="col-md-6 my-1">
                 <label>
                 <input type="checkbox" name"_remembe_me" checked>Se souvenir de moi

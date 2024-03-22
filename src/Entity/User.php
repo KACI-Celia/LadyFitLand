@@ -26,7 +26,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type:'boolean')]
     private $is_verified = false;
 
-    #[ORM\Column(type:'string',length:100)]
+    #[ORM\Column(type:'string',length:100 , nullable: true)]
     private $resetToken;
 
     /**
@@ -53,8 +53,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresseFacturationUser = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $telUser = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $telUser = null;
 
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
@@ -207,11 +207,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getTelUser(): ?float
+    public function getTelUser(): ?string
     {
         return $this->telUser;
     }
-    public function setTelUser(?float $telUser): static
+    public function setTelUser(?string $telUser): static
     {
         $this->telUser = $telUser;
 

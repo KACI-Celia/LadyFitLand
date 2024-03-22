@@ -20,7 +20,6 @@ use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
-
 #[Route('/reset-password')]
 class ResetPasswordController extends AbstractController
 {
@@ -35,7 +34,7 @@ class ResetPasswordController extends AbstractController
     /**
      * Display & process form to request a password reset.
      */
-    #[Route('', name: 'app_forgot_password_request', methods:['GET', 'POST'])]
+    #[Route('', name: 'app_forgot_password_request')]
     public function request(Request $request, MailerInterface $mailer, TranslatorInterface $translator): Response
     {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
@@ -80,12 +79,12 @@ class ResetPasswordController extends AbstractController
         if ($token) {
             // We store the token in session and remove it from the URL, to avoid the URL being
             // loaded in a browser and potentially leaking the token to 3rd party JavaScript.
-            $this->storeTokenInSession($token);//stocker le token en session
+            $this->storeTokenInSession($token);
 
             return $this->redirectToRoute('app_reset_password');
         }
 
-        $token = $this->getTokenFromSession();//récuperarion des token sauvegardés dans la session qui seront sauvegardés dans la variable $tokenR
+        $token = $this->getTokenFromSession();
 
         if (null === $token) {
             throw $this->createNotFoundException('No reset password token found in the URL or in the session.');
@@ -122,8 +121,6 @@ class ResetPasswordController extends AbstractController
 
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
-            //message après la réinitialisation 
-            $this->addFlash('success',"Votre mot de passe a été réinitialisé avec succés, vous pouvez vous connecter.");
 
             return $this->redirectToRoute('app_login');
         }
@@ -159,12 +156,12 @@ class ResetPasswordController extends AbstractController
 
             return $this->redirectToRoute('app_check_email');
         }
-        //token de réinitialisation généré
+
         $email = (new TemplatedEmail())
-            ->from(new Address('LadyFitLand@gmail.com', 'Cely CEL'))
+            ->from(new Address('LadyFitLand@gmail.com', 'LadyFitLand'))
             ->to($user->getEmail())
-            ->subject('Réinitialisation de mot de passe sur le site LadyFitLand')
-            ->htmlTemplate('emails/reset_password_email.html.twig')
+            ->subject('Your password reset request')
+            ->htmlTemplate('reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
             ])

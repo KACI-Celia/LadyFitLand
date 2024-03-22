@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\AbonnementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,11 +15,20 @@ class AccueilController extends AbstractController
         return $this->render('accueil/accueil.html.twig', []);
     }
 
-    #[Route('Abonnements',name:'frontAbonnement')]
-    public function abonnement():Response
+    #[Route('abonnements',name:'frontAbonnement')]
+    public function abonnement(AbonnementRepository $abonnementRepository):Response
     {
-        return $this->render('frontAbonnement/abonnement.html.twig');
+        return $this->render('frontAbonnement/abonnement.html.twig',[
+            'abonnements' => $abonnementRepository->findBy([], ['prix' => 'ASC']),//affichage des abonnements par ordre ascendant
+        ]);
     }
+
+    /*
+    ->find($id) => SELECT * FROM abonnement WHERE id = $id
+    ->findBy() => SELECT * FROM abonnement WHERE prix = 15.99
+
+
+    */
 
     #[Route('abonnementClassic',name:'abonnement_classic')]
     public function abonnementClassic():Response

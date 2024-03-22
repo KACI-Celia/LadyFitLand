@@ -62,6 +62,9 @@
 										</a>
 										<ul class="dropdown-menu">
 											<li>
+												<a class="dropdown-item" href="{{path('app_user_index')}}">Gestion des utilisateurs</a>
+											</li>
+											<li>
 												<a class="dropdown-item" href="{{ path('app_abonnement_index')}}">Gestion des Abonnements</a>
 											</li>
 											<li>
@@ -114,14 +117,16 @@
 				{#Likn avec le fichier JS du dossier JS public#}
 				<script src="{{asset('js/script.js')}}"></script>
 				{% block javascripts %}{% endblock %}
-
-				<footer class="footer bg-dark mt-5 p-4 text-center text-white justify-content-center">
+				
+				<div class="container-fluide">
+				<footer class="footer footer bg-dark mt-5 p-4 text-center text-white justify-content-center">
 				<div class="footer text-white align-item-center">
 				<p>Contact</p>
 				<p>Adresse de la salle</p>
 				<p>Mention légales</p>
 				</div>
 				</footer>
+				</div>
 			</body>
 			
 		</html>

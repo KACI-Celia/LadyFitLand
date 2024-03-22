@@ -19,7 +19,6 @@
                 <th>DateNaissanceUser</th>
                 <th>AdresseUser</th>
                 <th>AdresseFacturationUser</th>
-                <th>StatutUser</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -36,10 +35,8 @@
                 <td>{{ user.dateNaissanceUser ? user.dateNaissanceUser|date('Y-m-d') : '' }}</td>
                 <td>{{ user.adresseUser }}</td>
                 <td>{{ user.adresseFacturationUser }}</td>
-                <td>{{ user.statutUser }}</td>
                 <td>
                     <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -50,5 +47,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+    {#mettre le code pour banir un user#}
 {% endblock %}

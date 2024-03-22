@@ -34,7 +34,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);//persist:permet d'inserer l'objet $user en BDD
             $entityManager->flush();//->executer
             // do anything else you need here, like send an email
-
+            $this->addFlash('success','Vous avez bien été inscrit');//message confirmant l'inscription
             return $this->redirectToRoute('app_login');
         }
 

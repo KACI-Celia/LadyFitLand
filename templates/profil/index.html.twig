@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+    <h1>Profil</h1>
+
+                <td>{{ app.user.id }}</td>
+                <td>{{ app.user.roles ? app.user.roles|json_encode : '' }}</td>
+                <td>{{ app.user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ app.user.resetToken }}</td>
+                <td>{{ app.user.nomUser }}</td>
+                <td>{{ app.user.prenomUser }}</td>
+                <td>{{ app.user.dateNaissanceUser ? app.user.dateNaissanceUser|date('Y-m-d') : '' }}</td>
+                <td>{{ app.user.adresseUser }}</td>
+                <td>{{ app.user.zipcode }}</td>
+                <td>{{ app.user.city }}</td>
+                <td>{{ app.user.adresseFacturationUser }}</td>
+                <td>{{ app.user.telUser }}</td>
+                <td>{{ app.user.email }}</td>
+
+                <a href="{{ path('app_profil_edit') }}">Modifier mon profil</a>
+
+    {{ include('profil/_delete_form.html.twig') }}
+
+{% endblock %}
