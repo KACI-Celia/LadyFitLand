@@ -44,10 +44,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresseUser = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $zipcode = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $city = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -73,6 +73,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToMany(targetEntity: Espaces::class, inversedBy: 'users')]
     private Collection $Espaces;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $ban = null;
 
     public function __construct()
     {
@@ -180,7 +183,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->zipcode;
     }
 
-    public function setZipcode(string $zipcode): static
+    public function setZipcode(?string $zipcode): static
     {
         $this->zipcode = $zipcode;
 
@@ -191,7 +194,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->city;
     }
-    public function setCity(string $city): static
+    public function setCity(?string $city): static
     {
         $this->city = $city;
         return $this;
@@ -335,4 +338,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function isBan(): ?bool
+    {
+        return $this->ban;
+    }
+
+    public function setBan(?bool $ban): static
+    {
+        $this->ban = $ban;
+
+        return $this;
+    }
+
 }

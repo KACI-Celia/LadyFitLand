@@ -21,6 +21,10 @@ class ConfigurationController extends AbstractController
             'configurations' => $configurationRepository->findAll(),
         ]);
     }
+    #[Route('/adresse', name:'adresse_salle')]
+    public function adresse(){
+        return $this->render('configuration/adresse.html.twig');
+    }
 
     #[Route('/new', name: 'app_configuration_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

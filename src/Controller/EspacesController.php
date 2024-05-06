@@ -4,14 +4,17 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use \App\Repository\EspacesRepository;
 use Symfony\Component\Routing\Annotation\Route;
 
 class EspacesController extends AbstractController
 {
     #[Route('/espaces', name: 'espaces_salle')]
-    public function index(): Response
+    public function index(EspacesRepository $espacesRepository): Response
     {
-        return $this->render('espaces/espaces.html.twig', []);
+        return $this->render('espaces/espaces.html.twig', [
+            'espaces'=>$espacesRepository->findAll(),
+        ]);
     }
 
 

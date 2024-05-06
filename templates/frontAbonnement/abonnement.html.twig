@@ -12,54 +12,16 @@
 
     <section class="p-5" id="typesAbonements">
         <div class="container">
-            <!-- 3.2 row-cols est une classe BS qui permet de définir directement dans une row le nombre de colonne que l'on veut en fonction de la taille de l'écran (ex pour row-cols-1 nous aurons une seule colonne dès le mode mobile et pour toutes les autres largeurs, si l'on ajoute row-cols-md-2, nous aurons deux colonnes dès le mode tablette) -->
-            <div class="row ">
-                    <!-- card types abonnement -->
-
-                {# <div class="col">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Classic</h5>
-                            <h2 class="montantAbonnement text-center">25,99€</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam mollitia molestias ipsum adipisci maxime?</p>
-                            <div class="d-flex justify-content-around">
-                            <a href="{{path('abonnement_classic')}}" class="btn btn-outline-secondary btn-sm">Je choisis cette offre</a>
-                            </div>
-                        </div>
-                </div>
-
-                <div class="col">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">DUO</h5>
-                            <h2 class="montantAbonnement text-center">45,00€</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam mollitia molestias ipsum adipisci maxime?</p>
-                            <div class="d-flex justify-content-around">
-                            <a href="{{path('abonnement_duo')}}" class="btn btn-outline-secondary btn-sm">Je choisis cette offre</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">VIP</h5>
-                            <h2 class="montantAbonnement text-center">49,99€</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam mollitia molestias ipsum adipisci maxime?</p>
-                            <div class="d-flex justify-content-around">
-                            <a href="{{path('abonnement_vip')}}" class="btn btn-outline-secondary btn-sm ">Je choisis cette offre</a>
-                        </div>
-                    </div>
-                </div> #}
-
+            <div class="row justify-content-center ">
+                {#Boucle permettant d'afficher les abonnements#}
                 {% for abonnement in abonnements %}
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card mb-4">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card mx-3 mb-3">
                             <div class="card-body">
                                 <h5 class="card-title text-center">{{abonnement.libelle}}</h5>
-                                <h2 class="montantAbonnement text-center">{{abonnement.prix}}€</h2>
+                                <h2 class="montantAbonnement text-center">{{abonnement.prix}}€/mois</h2>
                                 <p class="card-text">
-                                
+                                {#condition pour limiter la taille des caractères de la description#}
                                 {% if abonnement.description|length > 20 %}
                                     {{ abonnement.description|slice(0, 20) }}...
                                 {% else %}
@@ -67,7 +29,7 @@
                                 {% endif %}
                                 </p>
                                 <div class="d-flex justify-content-around">
-                                    <a href="{{path('abonnement_vip')}}" class="btn btn-outline-secondary btn-sm ">Je choisis cette offre</a>
+                                    <a href="{{ path('frontAbonnement', {'id' : abonnement.id}) }}" class="btn btn-outline-secondary btn-sm">Voir les détails</a> 
                                 </div>
                             </div>
                         </div>
@@ -76,6 +38,8 @@
             </div>
         </div>
     </section>
+
+    
 {#insertion des cardes des types d'abonement avec BS#}
 
 {% endblock %}

@@ -1,8 +1,29 @@
 {% extends "base.html.twig" %}
 
-{% block h1 %}Abonnement VIP{% endblock %}
-
 {% block body %}
+    <h1 class="mt-5 text-center">Abonnement classic</h1>
+    <a class="btn btn-dark mt-3 ms-3" href="{{path('frontAbonnement')}}">Retour</a>
+    <div class="container mt-2">
+        <div class="d-flex justify-content-center align-items-center vh-100">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Abonnement VIP</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Accès exclusif</h5>
+                <p class="card-text">Profitez de tous les avantages de notre abonnement VIP pour seulement 45,99 euros par mois!</p>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Accès illimité aux installations haut de gamme</li>
+                <li class="list-group-item">Participation à des événements exclusifs</li>
+                <li class="list-group-item">Coaching personnalisé</li>
+                <li class="list-group-item">Cours premium</li>
+                </ul>
+                <div class="card-footer">
+                <a href="{{path('app_register')}}" class="btn btn-primary mt-3">Je m'inscris</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<a class="btn btn-warning mt-3 mb-2 col-2" href="{{path('app_register')}}">Je m'inscris</a>
 {% endblock %}

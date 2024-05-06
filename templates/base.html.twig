@@ -9,12 +9,13 @@
 		{#lien CDN de BS#}
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 		{#link fichier style.css du dossier public/CSS#}
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/cerulean/bootstrap.min.css" integrity="sha256-qR01fmz4XOCNC3dVfO+qjS6hX2BbJjqGD8WGd5sG19o=" crossorigin="anonymous">{#link bootswatch#}
 		<link rel="stylesheet" href="{{asset('css/style.css')}}"> {% block stylesheets %}{% endblock %}
 
 		</head>
 
-		<body>
-			<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+		<body class"background-image">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="{{path('page_principale')}}">LadyFitLand</a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,12 +27,13 @@
 							<li class="nav-item">
 								<a class="nav-link active" aria-current="page" href="{{path('frontAbonnement')}}">Abonnements</a>
 							</li>
-
-							<li class="nav-item dropdown">
-								<a class="nav-link active dropdown-toggle" href="{{path('espaces_salle')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{path('espaces_salle')}}">Espaces</a>
+							{# <li class="nav-item dropdown"> #}
+								{# <a class="nav-link active dropdown-toggle" href="{{path('espaces_salle')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 									Espaces
-								</a>
-								<ul class="dropdown-menu bg-light">
+								</a> #}
+								{# <ul class="dropdown-menu bg-light">
 									<li>
 										<a class="dropdown-item" href="{{path('espace_musculation')}}">Musculation</a>
 									</li>
@@ -44,8 +46,8 @@
 									<li>
 										<a class="dropdown-item" href="{{path('espace_detente')}}">Détente</a>
 									</li>
-								</ul>
-							</li>
+								</ul> #}
+								
 
 							{#
 							Si l'utilisateur est connecté alors app.user retourne un objet de l'entity User
@@ -53,16 +55,18 @@
 							#}
 
 							{% if app.user %}
-
 								{% if is_granted('ROLE_ADMIN') %}
 									{# PARTIE ADMIN #}
-									<li>
+									<li class="nav-item dropdown">
 										<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 											Dashboard
 										</a>
 										<ul class="dropdown-menu">
 											<li>
 												<a class="dropdown-item" href="{{path('app_user_index')}}">Gestion des utilisateurs</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{path('app_profil_index')}}">Gestion du profil</a>
 											</li>
 											<li>
 												<a class="dropdown-item" href="{{ path('app_abonnement_index')}}">Gestion des Abonnements</a>
@@ -75,22 +79,23 @@
 											</li>
 										</ul>
 									</li>
-								{% endif %}
-								{#si l'Admin est connecté#}
-								<li class="nav-item">
-									<a class="nav-link active" href="{{path('app_logout')}}">Déconnexion</a>
-								</li>
-								{#Interface User non connecté#}
-							{% else %}
-								<li class="nav-item">
-									<a class="nav-link active" href="{{path('app_register')}}">Inscription</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link active" href="{{path('app_login')}}">Connexion</a>
-								</li>
-								
-							{% endif %}
-
+										{% endif %}
+										{#si l'Admin est connecté#}
+										<li class="nav-item">
+											<a class="nav-link active" href="{{path('app_logout')}}">Déconnexion</a>
+										</li>
+										<li>
+											<a class="nav-link active" href="{{path('app_profil_index')}}">Mon profil</a>
+											</li>
+										{#Interface User non connecté#}
+									{% else %}
+										<li class="nav-item">
+											<a class="nav-link active" href="{{path('app_register')}}">Inscription</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link active" href="{{path('app_login')}}">Connexion</a>
+										</li>
+									{% endif %}
 						</ul>
 					</div>
 				</div>
@@ -106,11 +111,14 @@
 				</div>
 			{% endif %}
 			
-			
-			<main class="col-md-10 mx-auto p-2">
-			<h1 class="text-center text-dark my-2">{% block h1 %}{% endblock %}</h1>
+			<main class="col-md-10 col-12 mx-auto py-2"> 
+			{% block h1 %}{% endblock %}
 			{% block body %}{% endblock %}
-			</main>
+			</main> 
+			{# <h1 class="text-center text-dark my-2"></h1> #}
+			
+			
+			
 
 				{#lien CDN js de BS#}
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -119,14 +127,15 @@
 				{% block javascripts %}{% endblock %}
 				
 				<div class="container-fluide">
-				<footer class="footer footer bg-dark mt-5 p-4 text-center text-white justify-content-center">
+				<footer class="footer bg-dark mt-auto p-4 text-center text-white justify-content-center">
 				<div class="footer text-white align-item-center">
-				<p>Contact</p>
-				<p>Adresse de la salle</p>
+				<a class="text-white" href="{{path('app_contact')}}">Contact</a> <br>
+				<a  class="text-white" href="{{path('adresse_salle')}}">Adresse de la salle</a>
 				<p>Mention légales</p>
 				</div>
 				</footer>
 				</div>
+				
 			</body>
 			
 		</html>

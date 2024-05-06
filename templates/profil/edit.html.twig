@@ -3,10 +3,36 @@
 {% block title %}Modifier mon profil{% endblock %}
 
 {% block body %}
-    <h1>Edit User</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-dark col-2 mt-2">{{ button_label|default('Enregistrer') }}</button>
-    {{ form_end(form) }}
 
+    <h1 class="text-center my-3 display-5" >Modifier mon profil</h1>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                {{ form_start(form) }}
+                    <div class="mb-3">
+                        <label for="edit_profile_user_form_prenomUser">Prénom</label>
+                        {{ form_widget(form.prenomUser) }}
+                        <label for="edit_profile_user_form_ nomUser">Nom</label>
+                        {{ form_widget(form.nomUser) }}
+                        <label for="edit_profile_user_form_email">Email</label>
+                        {{ form_widget(form.email) }}
+                        <label for="edit_profile_user_form_adresseUser">Adresse</label>
+                        {{ form_widget(form.adresseUser) }}
+                        <label for="edit_profile_user_form_zipcode">Code postal</label>
+                        {{ form_widget(form.zipcode) }}
+                        <label for="edit_profile_user_form_city">Ville</label>
+                        {{ form_widget(form.city) }}
+                    </div>
+                    <div>
+                        <input type="submit" value="Modifier" class="btn btn-primary ms-3">
+                        <a class="btn btn-dark ms-2" href="{{path('app_profil_index')}}">Retour</a>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    
+{#     
+    <button class="btn btn-dark col-2 mt-2">{{ button_label|default('Enregistrer') }}</button> #}
 {% endblock %}

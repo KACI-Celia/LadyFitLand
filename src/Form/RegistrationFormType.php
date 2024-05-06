@@ -131,7 +131,8 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'type'=>PasswordType::class,
                 'row_attr'=>[
-                    'class'=>'shadow p-3 ms-2'
+                    'class'=>'shadow p-3 ms-2',
+                    
                 ],
                 'mapped' => false,
                 'first_options'=>[
@@ -145,8 +146,11 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
-                    new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
-                    "Le mot de passe doit contenir 14 caractères avec 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial")
+                    new Regex([
+                        'pattern'=>'/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
+                        'message'=>"Le mot de passe doit contenir 14 caractères avec 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial. "
+                    
+                    ]),
                 ],
             ])
 
@@ -171,4 +175,4 @@ class RegistrationFormType extends AbstractType
             'data_class' => User::class,
         ]);
     }
-}//ça correspond à quoi ça?
+}
