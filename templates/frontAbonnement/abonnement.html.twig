@@ -18,7 +18,7 @@
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card mx-3 mb-3">
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{abonnement.libelle}}</h5>
+                                <h5 class="card-title text-center mb-2">{{abonnement.libelle}}</h5>
                                 <h2 class="montantAbonnement text-center">{{abonnement.prix}}€/mois</h2>
                                 <p class="card-text">
                                 {#condition pour limiter la taille des caractères de la description#}
@@ -29,12 +29,13 @@
                                 {% endif %}
                                 </p>
                                 <div class="d-flex justify-content-around">
-                                    <a href="{{ path('frontAbonnement', {'id' : abonnement.id}) }}" class="btn btn-outline-secondary btn-sm">Voir les détails</a> 
+                                    <a href="{{ path('detail_abonnement', {'id' : abonnement.id}) }}" class="btn btn-outline-secondary btn-sm">Voir les détails</a> 
                                 </div>
                             </div>
                         </div>
                     </div> 
                 {% endfor %}
+                <a class="btn btn-warning  col-2 mt-3" href="{{ path('app_register')}}">Je m'inscris</a>
             </div>
         </div>
     </section>

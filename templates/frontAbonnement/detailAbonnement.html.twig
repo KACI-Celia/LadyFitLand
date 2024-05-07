@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'Abonnement{% endblock %}
+
+{% block body %}
+    <section class="p-5" id="detailAbonements">
+        <div class="container">
+            <div class="row justify-content-center ">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card mx-3 mb-3">
+                            {# <div class="img-thumbnail">
+                            <img src="{{asset('/images/')}}" alt="">
+                            </div> #}
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{abonnement.libelle}}</h5>
+                                <h2 class="montantAbonnement text-center mt-3">{{abonnement.prix}}€/mois</h2>
+                                <p class="card-text">Accès illimité aux installations haut de gamme</p>
+                                <p class="card-text">Accès à</p>
+                                <div class="d-flex justify-content-around">
+                                    <a href="{{ path('frontAbonnement') }}" class="btn btn-outline-dark btn-sm">Retour</a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <a class="btn btn-warning col-2 mt-3 mx-auto" href="{{ path('app_register')}}">Je m'inscris</a>
+    </section>
+{% endblock %}

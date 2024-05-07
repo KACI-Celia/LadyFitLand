@@ -13,7 +13,7 @@ class EspacesController extends AbstractController
     public function index(EspacesRepository $espacesRepository): Response
     {
         return $this->render('espaces/espaces.html.twig', [
-            'espaces'=>$espacesRepository->findAll(),
+            'espaces'=>$espacesRepository->findBy(),
         ]);
     }
 

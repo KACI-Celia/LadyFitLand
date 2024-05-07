@@ -88,5 +88,4 @@ class ProfilController extends AbstractController
 
         return $this->redirectToRoute('app_register', [], Response::HTTP_SEE_OTHER);
     }
-   
 }

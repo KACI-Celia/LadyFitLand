@@ -19,19 +19,22 @@ class AccueilController extends AbstractController
 
     
     //route abonnement principale
-    #[Route('/abonnements/{id}',name:'frontAbonnement')]
+    #[Route('/abonnements',name:'frontAbonnement')]
 
-    public function abonnement($id, AbonnementRepository $abonnementRepository):Response
-    {   dd($id);
+    public function abonnement(AbonnementRepository $abonnementRepository):Response
+    {   //dd($id);
        //Récupérer l'abonnement correspondant à partir de $id
-        $abonnement = $abonnementRepository->find($id);
+        //$abonnement = $abonnementRepository->find($id);
         
         //Vérifier si l'abonnement existe
-        if (!$abonnement) {
-            throw $this->createNotFoundException('Aucun abonnement trouvé pour cet identifiant : '.$id);
-        }
+        //if (!$abonnement) {
+            //throw $this->createNotFoundException('Aucun abonnement trouvé pour cet identifiant : '.$id);
+        //}
+
         return $this->render('frontAbonnement/abonnement.html.twig',[
-            'abonnements' => $abonnementRepository->findBy([], ['prix' => 'ASC']),//affichage des abonnements par ordre ascendant
+            
+            'abonnements' => $abonnementRepository->findAll(),//affichage des abonnements par ordre ascendant
+            
             
         ]);
     }
@@ -42,6 +45,30 @@ class AccueilController extends AbstractController
     */
 
     //Routes pour les types d'abonnement coté front:
+
+
+    //creer un e route detailAbonnement
+
+    #[Route('detail/abonnement/{id}',name:'detail_abonnement')]
+    public function DetailAbonnement(AbonnementRepository $abonnementRepository, $id):Response
+    {
+
+        //Récupérer l'abonnement correspondant à partir de $id
+        $abonnement = $abonnementRepository->find($id);
+        
+        //Vérifier si l'abonnement existe
+        if (!$abonnement) {
+            throw $this->createNotFoundException('Aucun abonnement trouvé pour cet identifiant : '.$id);
+        }
+
+
+        return $this->render('frontAbonnement/detailAbonnement.html.twig',[
+            'abonnement' => $abonnement,
+            //affichage des  détails de l'abonnements 
+            //'abonnements'=>$abonnementRepository->findBy([],['prix'=> 'ASC'])
+            
+        ]);
+    }
 
     #[Route('abonnementClassic',name:'abonnement_classic')]
     public function abonnementClassic():Response
@@ -62,22 +89,6 @@ class AccueilController extends AbstractController
     }
 
 
-    // #[Route('/abonnement/{id}', name: 'abonnement_detail')]
-    // public function abonnementDetail($id, AbonnementRepository $abonnementRepository): Response
-    // {
-    //     // Récupérer l'abonnement correspondant à partir de $id
-    //     $abonnement = $abonnementRepository->find($id);
-        
-    //     // Vérifier si l'abonnement existe
-    //     if (!$abonnement) {
-    //         throw $this->createNotFoundException('Aucun abonnement trouvé pour cet identifiant : '.$id);
-    //     }
-        
-    //     // Passer l'abonnement à la vue et afficher la vue correspondante
-    //     return $this->render('frontAbonnement/abonnement.html.twig', [
-    //         'abonnement' => $abonnement
-    //     ]);
-    // }
-
+    
 
 }
