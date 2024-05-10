@@ -17,7 +17,7 @@ class AjaxController extends AbstractController
     {
         $userId = $request->request->get('id');
         $user = $userRepository->find($userId);
-        
+        $message = '';
         if ($user->isBan()) {//si le bool est à =1
             $user->setBan(false);
         }else{//si le bool est = à 0

@@ -1,31 +1,88 @@
 {% extends "base.html.twig" %}
 
-{% block h1 %}{% endblock %}
+{% block title %}Découvre nos espaces{% endblock %}
 
 {% block body %}
-<div class"container-fluid bg-size-cover">
-    <div class="mt-5 text-center">
-            <h1>Découvre nos espaces</h1>
-        </div>
-        {% for espace in espaces %}
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card mx-3 mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title text-center mb-2">{{espace.libelle}}</h5>
-                                <h2 class="montantAbonnement text-center">{{espace.description}}€/mois</h2>
-                                <p class="card-text">
-                                {#condition pour limiter la taille des caractères de la description#}
-                                
-                                </p>
-                                <div class="d-flex justify-content-around">
-                                    <a class="btn btn-dark mb-2 col-2" href="{{ path('espaces_salle', {'id': espace.id}) }}">Découvrir</a>
- 
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                {% endfor %}
+<div class="title">
+    <h1 class="text-center my-3 display-5">Découvre nos espaces</h1>
 </div>
-
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 7"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 8"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img src="{{asset('/images/femme_presse.jpg')}}" class="d-block w-100 h-70" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Espace musculation</h5>
+                <p>Retrouve pleins de machines dans l'espace musculation</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+            <img src="{{asset('/images/femme-dans-espace-musculation.jpg')}}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Espace Musculation</h5>
+                <p>Machine haut  et bas du corps</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+            <img src="{{asset('/images/cours_collectifs4.jpg')}}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Cours collectifs</h5>
+                <p>Participe à nos cours collectifs</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+            <img src="{{asset('/images/femmes_coursCollectifs.jpg')}}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Cours collectifs</h5>
+                <p>Choisis le cours qui te convient et reserve ta place</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+            <img src="{{asset('/images/cours_collectifs2.jpg')}}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Cours collectifs</h5>
+                <p>Découvre notre programme pour les cours collectifs.</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+            <img src="{{asset('/images/vue-laterale-femme-au-gymnase-cours-execution-tapis-roulant_23-2148419837.jpg')}}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Espace cardio</h5>
+                <p>Un grand espace qui te permet de faire ton cardio tranquillement.</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+            <img src="{{asset('/images/espace-velo-cardio.jpg')}}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Espace cardio</h5>
+                <p>Retrouve pleins de machine cardio.</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+            <img src="{{asset('/images/espace_detente.jpg')}}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Espace détente</h5>
+                <p>Retouve cet espace détente, ou tu peux déguster ton café tranquillement tout en parlant sport</p>
+            </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
 {% endblock %}
 

@@ -21,6 +21,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);//permet le traitement du formulaire:
             //si le formulaire est soumis et s'il est valide(respect des contraintes)
 
+            
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(

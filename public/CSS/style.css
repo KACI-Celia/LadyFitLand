@@ -20,7 +20,6 @@
     margin: auto; 
 }
 
-
 .img_coursCollectifs
 {
     max-width: auto;
@@ -96,6 +95,44 @@ footer{
         border-top: 1px solid #dee2e6;
         padding: 0.75rem 1.25rem;
     }
+    .registration-step {
+        margin-bottom: 20px;
+    }
+    
+    .registration-step input[type="text"],
+    .registration-step input[type="email"],
+    .registration-step input[type="tel"],
+    .registration-step input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+    }
+    
+    .registration-step button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .registration-step button:hover {
+        background-color: #0056b3;
+    }
+    .progress {
+        height: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .progress-bar {
+        background-color:#007bff;
+    }
+    
+   
+    
 
 
 
