@@ -46,7 +46,7 @@
                         value="{{user.id}}"{#valeur de input est l'id de l'utilisateur#}
 
                         {% if user.ban %}checked{% endif %}
-                    >
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Banir l'utilisateur</label>
                 </div>
 
                     <a class="btn btn-primary  me-2" href="{{ path('app_user_show', {'id': user.id}) }}">Afficher</a>

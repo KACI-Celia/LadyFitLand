@@ -145,13 +145,13 @@ class RegistrationFormType extends AbstractType
 
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
                 'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new Regex([
-                        'pattern'=>'/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
-                        'message'=>"Le mot de passe doit contenir 14 caractères avec 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial. "
+                // 'constraints' => [
+                //     new Regex([
+                //         'pattern'=>'/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
+                //         'message'=>"Le mot de passe doit contenir 14 caractères avec 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial. "
                     
-                    ]),
-                ],
+                //     ]),
+                // ],
             ])
 
             ->add('agreeTerms', CheckboxType::class, [

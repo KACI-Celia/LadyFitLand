@@ -76,16 +76,27 @@ class ProfilController extends AbstractController
     }
 
     #[Route('/supprimer', name: 'app_profil_delete', methods: ['GET','POST'])]
+
     public function delete(Request $request,  EntityManagerInterface $entityManager): Response
-    {
+    {   if (!$this->getUser()) {
+        // Rediriger vers une page d'erreur ou une page de connexion
+        return $this->redirectToRoute('app_register');
+    }
         $user = $this->getUser();
 
-        $this->addFlash('success',"{$user->getPrenomUser()} {$user->getNomUser()} a été supprimé!");
+        if (!$user->getId()) {
+            // Gérer le cas où l'utilisateur n'a pas d'identifiant valide
+            // Par exemple, afficher un message d'erreur et rediriger
+            return $this->redirectToRoute('app_register');
+        }
+
+        //$this->addFlash('success',"{$user->getPrenomUser()} {$user->getNomUser()} a été supprimé!");
         if ($this->isCsrfTokenValid('delete_profile', $request->request->get('csrf_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
+            $this->addFlash('success', "{$user->getPrenomUser()} {$user->getNomUser()} a été supprimé!");
         }
 
-        return $this->redirectToRoute('app_register', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('page_principale', [], Response::HTTP_SEE_OTHER);
     }
 }

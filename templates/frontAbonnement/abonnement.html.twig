@@ -27,13 +27,13 @@
                                 {% endif %}
                                 </p>
                                 <div class="d-flex justify-content-around">
-                                    <a href="{{ path('detail_abonnement', {'id' : abonnement.id}) }}" class="btn btn-outline-secondary btn-sm">Voir les détails</a> 
+                                    {# <a href="{{ path('detail_abonnement', {'id' : abonnement.id}) }}" class="btn btn-outline-secondary btn-sm">Voir les détails</a>  #}
+                                    <a  class="btn btn-secondary" href="{{path('app_register')}}">Je choisis cet abonnement</a>
                                 </div>
                             </div>
                         </div>
                     </div> 
                 {% endfor %}
-                <a class="btn btn-warning  col-2 mt-3" href="{{ path('app_register')}}">Je m'inscris</a>
             </div>
         </div>
     </section>

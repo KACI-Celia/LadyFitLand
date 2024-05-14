@@ -130,9 +130,11 @@ footer{
     .progress-bar {
         background-color:#007bff;
     }
-    
-   
-    
+    .carousel-item img {
+        height: 400px; /* Hauteur fixe pour toutes les images */
+        object-fit: cover; /* Assure que l'image couvre toute la zone définie */
+      }
+
 
 
 

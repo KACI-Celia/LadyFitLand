@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{# {% extends "base.html.twig" %}
 
 {% block h1 %}<h1 class="text-center text-primary my-2 shadow ">Rejoins-nous et dépasse tes limites</h1>{% endblock %}
 
@@ -8,8 +8,172 @@
 </div>
 
 
+{% endblock %} #}
+{# {% extends "base.html.twig" %}
 
-
-
-
+{% block h1 %}
+    <h1 class="text-center text-primary my-4">Rejoins-nous et dépasse tes limites</h1>
 {% endblock %}
+
+{% block body %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('images/femme-halteres.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+            
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/femme-halteres.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Cours de groupe</h5>
+                        <p class="card-text">Rejoignez nos cours de groupe animés par des instructeurs passionnés et atteignez vos objectifs de fitness en vous entraînant avec d'autres membres motivés.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/cours_collectifs3.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Entraînement personnel</h5>
+                        <p class="card-text">Travaillez individuellement avec nos entraîneurs personnels certifiés pour des séances d'entraînement sur mesure adaptées à vos besoins et objectifs personnels.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('/images/equipement_espaces.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Équipements modernes</h5>
+                        <p class="card-text">Profitez de notre équipement de pointe et de nos installations de qualité pour des séances d'entraînement efficaces et agréables.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} #}
+{% extends "base.html.twig" %}
+
+{% block h1 %}
+    <h1 class="text-center text-primary my-4">Rejoins-nous et dépasse tes limites</h1>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid p-0">
+        <img class="w-100 img-fluid" src="{{ asset('images/femme-halteres.jpg') }}" alt="Image principale">
+    </div>
+
+    <div class="container mt-4">
+            <div class="row"> 
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/equipement_espaces.jpg') }}" class="card-img-top d-block w-100" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Équipements modernes</h5>
+                        <p class="card-text">Profitez de notre équipement de pointe et de nos installations de qualité pour des séances d'entraînement efficaces et agréables.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/cours_collectifs3.jpg') }}" class="card-img-top d-block w-100" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Cours de groupe</h5>
+                        <p class="card-text">Rejoignez nos cours de groupe animées par des instructrices passionnées et atteignez vos objectifs de fitness en vous entraînant avec d'autres membres motivés.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/coaching.jpg') }}" class="card-img-top d-block w-100" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Entraînement personnel</h5>
+                        <p class="card-text">Travaillez individuellement avec nos coachs personnels certifiées pour des séances d'entraînement sur mesure adaptées à vos besoins et objectifs personnels.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+            <h2 class="text-center">Avis de nos membres</h2>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Avis 1</h5>
+                            <div class="rating">
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    
+                            </div>
+                            <p class="card-text">Je suis tellement reconnaissante d'avoir intégré LadyFitLand après avoir accouché. Les séances d'entraînement post-partum m'ont vraiment aidée à retrouver ma force et ma confiance en moi. Les instructeurs étaient incroyablement encourageants et compétents, et l'ambiance chaleureuse de la salle m'a permis de me sentir à l'aise dès le premier jour. Je recommande vivement cette salle à toutes les nouvelles mamans qui cherchent à retrouver leur forme physique et à se sentir bien dans leur peau !</p>
+                            <p class="card-text text-end"> Anna, Membre depuis 2 ans</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Avis 2</h5>
+                            <div class="rating">
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    
+                            </div>
+                            <p class="card-text">J'ai perdu plus de 10 kilos depuis que je me suis inscrit à LadyFitLand. Les cours de groupe sont ma partie préférée de la journée!</p>
+                            <p class="card-text text-end"> Melissa, Membre depuis 1 an</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Avis 3</h5>
+                            <div class="rating">
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9734;</span>
+                            </div>
+                            <p class="card-text">La salle de sport LadyFitLand a transformé ma vie. Les coachs sont incroyablement compétentes et motivantes, et l'ambiance est toujours positive.</p>
+                            <p class="card-text text-end"> Sophie, Membre depuis 6 mois</p>
+                        </div>
+                    </div>
+                </div>
+                        <div class="text-center mt-4">
+                            <p style="font-family: 'Roboto', sans-serif; font-size: 1.2rem;">Envie de nous rejoindre ? Choisis ton abonnement dès maintenant !</p>
+                            <a class="btn btn-primary col-3" href="{{ path('frontAbonnement') }}">Inscription</a>
+                        </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
