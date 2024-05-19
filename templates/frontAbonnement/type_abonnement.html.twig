@@ -1,0 +1,72 @@
+{% extends "base.html.twig" %}
+
+
+{% block stylesheets %}
+    <style>
+        .card {
+            height: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center text-primary my-4">Choisis l'abonnement qui te convient.</h1>
+    <div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+                <div class="card-body">
+                    <p class="text-center">Rejoins LadyFitLand, ton sanctuaire dédié au fitness féminin, où tu pourras atteindre tes objectifs sportifs dans une ambiance exclusivement réservée aux femmes. Avec nos espaces Cardio, Musculation, Cross-training et Cours Collectifs, que tu sois débutante ou confirmée, tu trouveras tout ce dont tu as besoin pour tes séances d'entraînement!</p>
+                </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container mt-3 mb-3">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 mx-aut">
+                    <div class="card-header">
+                        <h5 class="card-title text-center text-primary">Abonnement Classic</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text"><strong>Tarif : 30€/mois</strong></p>
+                        <p class="card-text">Accès aux équipements de fitness de base</p>
+                        <p class="card-text">Accès illimité à ton club</p>
+                        <p class="card-text">Suit ta progression sur ton espace</p>
+                        <a  class="btn btn-dark mt-3" href="{{path('app_register')}}">Je choisis cette offre</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 mx-aut">
+                    <div class="card-header">
+                        <h5 class="card-title text-center text-primary">Abonnement Duo</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text"><strong>Tarif : 55€/mois</strong></p>
+                        <p class="card-text">Accès pour deux personnes</p>
+                        <p class="card-text">Accès aux équipements de fitness de base</p>
+                        <p class="card-text">Accès aux cours collectifs standards</p>
+                        <a  class="btn btn-dark mt-3 align-item-end" href="{{path('app_register')}}">Je choisis cette offre</a>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 mx-aut">
+                    <div class="card-header">
+                        <h5 class="card-title text-center text-primary">Abonnement VIP</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text"><strong>Tarif : 80€/mois</strong></p>
+                        <p class="card-text">Accès à tous les équipements de fitness</p>
+                        <p class="card-text">Accès à tous les cours collectifs!</p>
+                        <p class="card-text">Coaching personnalisé</p>
+                        <a  class="btn btn-dark mt-3" href="{{path('app_register')}}">Je choisis cette offre</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

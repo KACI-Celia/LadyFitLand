@@ -35,7 +35,6 @@ class AccueilController extends AbstractController
             
             'abonnements' => $abonnementRepository->findAll(),//affichage des abonnements par ordre ascendant
             
-            
         ]);
     }
 
@@ -70,6 +69,14 @@ class AccueilController extends AbstractController
         ]);
     }
 
+    //route abonnement cards front:
+    #[Route('type/abonnement', name:'type_abonnement')]
+    public function typeAbonnement():Response
+    {
+        return $this->render('frontAbonnement/type_abonnement.html.twig');
+    }
+
+
     #[Route('abonnementClassic',name:'abonnement_classic')]
     public function abonnementClassic():Response
     {
@@ -87,8 +94,4 @@ class AccueilController extends AbstractController
     {
         return $this->render('frontAbonnement/abonnementVip.html.twig');
     }
-
-
-    
-
 }

@@ -48,9 +48,13 @@ class Cours
     #[ORM\ManyToOne(inversedBy: 'Cours')]
     private ?Espaces $espaces = null;
 
+    #[ORM\OneToMany(mappedBy: 'Cours', targetEntity: Reservation::class)]
+    private Collection $reservations;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -189,6 +193,36 @@ class Cours
     public function setEspaces(?Espaces $espaces): static
     {
         $this->espaces = $espaces;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): static
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setCours($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): static
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getCours() === $this) {
+                $reservation->setCours(null);
+            }
+        }
 
         return $this;
     }

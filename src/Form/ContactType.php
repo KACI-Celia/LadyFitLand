@@ -17,9 +17,26 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Nom', TextType::class)
-            ->add('Prenom', TextType::class)
+            ->add('Nom', TextType::class,[
+                'label'=>'Nom',
+                'required'=>false,
+                'constraints'=>[
+                    new NotBlank([
+                        'message'=>'Veuillez renseigner votre nom'
+                    ])
+                ]
+            ])
+            ->add('Prenom', TextType::class,[
+                'label'=>'Prénom',
+                'required'=>false,
+                'constraints'=>[
+                    new NotBlank([
+                        'message'=>'Veuillez renseigner votre prénom'
+                    ])
+                ]
+            ])
             ->add('email', EmailType::class,[
+                'required'=>false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Entrer votre Email',
@@ -27,6 +44,7 @@ class ContactType extends AbstractType
                 ],
             ])
             ->add('sujet', TextType::class,[
+                'required'=>false,
                 'attr' => [
                     'class' => 'form-control',
                     'minlenght' => '2',
@@ -36,15 +54,24 @@ class ContactType extends AbstractType
                 'label_attr' => [
                     'class' => 'form-label mt-4'
                 ],
-            ])
-            ->add('message', TextareaType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Entrer votre sujet',
+                    ]),
                 ],
+            ])
+
+            ->add('message', TextareaType::class, [
+                'required'=>false,
+                
                 'label' => 'Description',
                 'label_attr' => [
                     'class' => 'form-label mt-4'
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Entrer votre message',
+                    ]),
                 ],
             ])
             ->add('submit', SubmitType::class,[

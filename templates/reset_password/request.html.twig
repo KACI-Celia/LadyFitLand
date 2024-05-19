@@ -2,29 +2,32 @@
 
 {% block title %}Réinitialisation du mot de passe{% endblock %}
 
-
 {% block body %}
     <main>
         <div class="container">
-            <h1 class="text-center my-3 display-5">Réinitialisation du mot de passe</h1>
-            <div class="row mt-5">
-                <div class="col-md6 mx-auto shadow p-4">
-                    {% for flash_error in app.flashes('reset_password_error') %}
-                        <div class="text-center alert alert-danger" role="alert">{{ flash_error }}</div>
-                    {% endfor %}
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-6">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h1 class="card-title text-center mb-4 text-primary">Réinitialisation du mot de passe</h1>
+                            {% for flash_error in app.flashes('reset_password_error') %}
+                                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                            {% endfor %}
 
-                    {{ form_start(requestForm) }}
-                        <div class="mb-3">
-                            <label for="reset_password_request_form_email">Email</label>
-                            {{ form_widget(requestForm.email,{'attr':{'class':'form-control','autofocus':'autofocus'}} ) }}
-                            <small>
-                            <em>Veuillez rentrer votre adresse email afin que vous receviez le lien de réinitialisation de mot de passe</em>
-                            </small> 
+                            {{ form_start(requestForm) }}
+                                <div class="mb-3">
+                                    <label for="reset_password_request_form_email" class="form-label">Email</label>
+                                    {{ form_widget(requestForm.email, {'attr': {'class': 'form-control', 'autofocus': 'autofocus'}}) }}
+                                    <small class="form-text text-muted">
+                                        Veuillez entrer votre adresse email pour recevoir le lien de réinitialisation de mot de passe
+                                    </small> 
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Réinitialiser</button>
+                                </div>
+                            {{ form_end(requestForm) }}
                         </div>
-                        <div>
-                            <input type="submit" class="btn btn-primary shadow">
-                        </div>
-                        {{ form_end(requestForm) }}
+                    </div>
                 </div>
             </div>
         </div>

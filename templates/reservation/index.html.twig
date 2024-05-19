@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Réservations{% endblock %}
+
+{% block body %}
+    <h1>Liste des Réservations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date de Réservation</th>
+                <th>Statut</th>
+                <th>Cours</th> <!-- Ajout de la colonne pour le cours -->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.id }}</td>
+                    <td>{{ reservation.dateReservation ? reservation.dateReservation|date('Y-m-d H:i') : '' }}</td>
+                    <td>{{ reservation.status }}</td>
+                    <td>{{ reservation.cours.libCours }}</td> <!-- Afficher le libellé du cours -->
+                    <td>
+                        <a class="btn btn-secondary mb-2" href="{{ path('app_reservation_show', {'id': reservation.id}) }}">Afficher</a>
+                        <!-- Ajoutez d'autres actions si nécessaire -->
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Pas de résultat trouvé</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

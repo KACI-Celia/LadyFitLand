@@ -3,29 +3,31 @@
 {% block title %}Nouveau mot de passe{% endblock %}
 
 {% block body %}
-    <main>
-        <div class="container">
-            <h1>Nouveau mot de passe</h1>
+<main>
+    <div class="container">
+        <h1 class="text-center mt-5">Nouveau mot de passe</h1>
 
-            <div class="row mt-5">
-                <div class="col-md-6 mx-auto shadow p-4">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-md-6">
+                <div class="shadow p-4">
                     {{ form_start(resetForm) }}
-                        <div class="mb-3">
-                            <div class="text-danger">{{form_errors(resetForm.plainPassword.first)}}</div>
-                            <label for="change_password_form_plainpassword_first">Nouveau mot de passe</label>
-                            {{ form_widget(resetForm.plainPassword.first) }}
-                        </div>
-                        <div class="mb-3">
-                            <div class="text-danger">{{form_errors(resetForm.plainPassword.second)}}</div>
-                            <label for="change_password_form_plainpassword_second">Confirmation du nouveau mot de passe</label>
-                            {{ form_widget(resetForm.plainPassword.second) }}
-                        </div>
-                        <div>
-                        <input type="submit" class="btn btn-primary shadow">
-                        </div>
-                        {{ form_end(resetForm) }}
+                    <div class="mb-3">
+                        <label for="change_password_form_plainpassword_first" class="form-label">Nouveau mot de passe</label>
+                        <div class="text-danger">{{ form_errors(resetForm.plainPassword.first) }}</div>
+                        {{ form_widget(resetForm.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="change_password_form_plainpassword_second" class="form-label">Confirmation du nouveau mot de passe</label>
+                        <div class="text-danger">{{ form_errors(resetForm.plainPassword.second) }}</div>
+                        {{ form_widget(resetForm.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="mb-3">
+                        <input type="submit" class="btn btn-primary btn-block shadow" value="Valider">
+                    </div>
+                    {{ form_end(resetForm) }}
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 {% endblock %}

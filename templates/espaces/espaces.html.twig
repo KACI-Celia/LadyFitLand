@@ -2,10 +2,68 @@
 
 {% block title %}Découvre nos espaces{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Style du titre */
+        .title h1 {
+            font-family: 'Arial', sans-serif;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        /* Style du carousel */
+        #carouselExampleCaptions {
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .carousel-item img {
+            border-radius: 10px;
+            object-fit: cover;
+            height: 400px; /* Ajustez la hauteur des images selon vos besoins */
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .carousel-caption h5,
+        .carousel-caption p {
+            color: #fff;
+        }
+
+        /* Contrôles du carousel */
+        .carousel-control-prev,
+        .carousel-control-next {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+        .carousel-item img {
+    border-radius: 10px;
+    object-fit: cover; /* Ajuste la taille de l'image pour remplir complètement le conteneur */
+    height: 100%; /* Ajustez la hauteur des images selon vos besoins */
+}
+
+        /* Icones des contrôles */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath fill="%23fff" d="M11.354 4.646a.5.5 0 0 0-.708 0L5.646 9l-1.5-1.5a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l6-6a.5.5 0 0 0 0-.708z"%3E%3C/path%3E%3C/svg%3E');
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
+
 <div class="title">
     <h1 class="text-center my-3 display-5">Découvre nos espaces</h1>
 </div>
+
     <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -83,6 +141,18 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-        </div>
-{% endblock %}
+</div>
 
+   <div class="container my-5">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-6 text-center">
+            <h5 class="mb-4">Inscrivez-vous dès maintenant !</h5>
+            <p>Rejoignez notre communauté dès aujourd'hui pour accéder à tous nos services et bénéficier d'avantages exclusifs.</p>
+            <a href="{{ path('app_register') }}" class="btn btn-primary col-3 mt-3">S'inscrire</a>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -18,6 +18,7 @@ class EditUserPasswordFormType extends AbstractType
     {
         $builder
             ->add('currentPassword', PasswordType::class,[
+                'required'=>false,
                 'constraints'=>[
                     new UserPassword([
                         "message"=>"Le mot de passe actuel est incorrect. "
@@ -26,6 +27,7 @@ class EditUserPasswordFormType extends AbstractType
                     'required'=>false,
             ])
             ->add('plainPassword', RepeatedType::class,[
+                'required'=>false,
                 'type' => PasswordType::class,
                 'first_options'=>[
                     'constraints'=>[
@@ -33,7 +35,7 @@ class EditUserPasswordFormType extends AbstractType
                             'message'=>'Le nouveau mot de passe est obligatoire.'
                         ]),
                         new Length([
-                            'min'=>14,
+                            'min'=>12,
                             'max'=>255,
                             'minMessage'=>'Le nouveau mot de passe doit contenir au minimun {{limit}} caractères',
                             'maxMessage'=>'Le nouveau mot de passe doit contenir au maximum {{limit}} caractères'

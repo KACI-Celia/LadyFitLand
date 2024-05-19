@@ -26,12 +26,8 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('prenomUser', TextType::class,[
                 'label'=>'Prénom',
-                'row_attr'=>[
-                    'class'=>'shadow p-3' 
-                ],
                 'required'=>false,
                 'constraints'=>[
-                    
                     new NotBlank([
                         'message'=>'Veuillez renseigner votre prénom'
                     ])
@@ -39,9 +35,6 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('nomUser', TextType::class,[
                 'label'=>'Nom',
-                'row_attr'=>[
-                    'class'=>'shadow p-3'
-                ],
                 'required'=>false,
                 'constraints'=>[
                     new NotBlank([
@@ -52,9 +45,6 @@ class RegistrationFormType extends AbstractType
 
             ->add('adresseUser', TextType::class,[
                 'label'=>'Adresse',
-                'row_attr'=>[
-                    'class'=>'shadow p-3'
-                ],
                 'required'=>false,
                 'constraints'=>[
                     new NotBlank([
@@ -64,22 +54,28 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('zipcode',TextType::class,[
                 'label'=>'Code postal',
-                'row_attr'=>[
-                    'class'=>'shadow p-3'
-                ],
+                'required'=>false,
+                
+                'constraints'=>[
+                    new NotBlank([
+                        'message'=>'Veuillez renseigner le code postal'
+                    ])
+                ]
             ])
 
             ->add('city',TextType::class,[
                 'label'=>'Ville',
-                'row_attr'=>[
-                    'class'=>'shadow p-3'
-                ],
+                'required'=>false,
+               
+                'constraints'=>[
+                    new NotBlank([
+                        'message'=>'Veuillez renseigner la ville'
+                    ])
+                ]
             ])
             ->add('telUser', TextType::class,[
                 'label'=>'Numéro de téléphone',
-                'row_attr'=>[
-                    'class'=>'shadow p-3'
-                ],
+                
                 'required'=>false,
                 'constraints'=>[
                     new NotBlank([
@@ -87,18 +83,19 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min'=>10,
-                        //'max'=>10,
-                        'minMessage'=>'Le numéro de téléphone doit contenir 10 chiffres',
-                        'maxMessage'=>'Le numéro de téléphone ne doit pas dépasser 10 chiffres'
+                        'max'=>10,
+                        'exactMessage'=>'Le numéro de téléphone doit contenir exactement {{ limit }} chiffres'
+                    ]),
+                    new Regex([
+                        'pattern'=>'/^\d{10}$/',
+                        'message'=>'Le numéro de téléphone doit contenir uniquement des chiffres'
                     ])
                 ]
             ])
 
             ->add('email', EmailType::class,[
                 'label'=>'E-mail',
-                'row_attr'=>[
-                    'class'=>'shadow p-3'
-                ],
+                
                 'required'=>false,
                 'constraints'=>[
                     new NotBlank([
@@ -115,9 +112,7 @@ class RegistrationFormType extends AbstractType
                 'widget' => 'single_text',
                 'input'  => 'datetime_immutable',
                 'years'=>range(date('Y')-90,date('Y')),
-                'row_attr'=>[
-                    'class'=>'shadow p-3 m-0'
-                ],
+                
                 'required'=>false,
                 'constraints'=>[
                     new NotBlank([
@@ -130,43 +125,50 @@ class RegistrationFormType extends AbstractType
                                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'type'=>PasswordType::class,
-                'row_attr'=>[
-                    'class'=>'shadow p-3 ms-2',
-                    
-                ],
+                
+                'required'=>false,
                 'mapped' => false,
                 'first_options'=>[
                     'label'=>'Mot de passe'
                 ],
-                
+                'constraints' => [
+                    new NotBlank([
+                        'message'=>'Le mot de passe est obligatoire.'
+                    ]),
+                    new Length([
+                        'min'=>12,
+                        'max'=>255,
+                        'minMessage'=>'Le nouveau mot de passe doit contenir au minimun {{ limit }} caractères',
+                        'maxMessage'=>'Le nouveau mot de passe doit contenir au maximum {{ limit }} caractères'
+                    ]),
+                    new Regex([
+                        'pattern'=>'/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{12,}$/',
+                        'message'=>"Le mot de passe doit contenir 12 caractères avec 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial. "
+                    ]),
+                ],
                 'second_options'=>[
-                    'label'=>'Confirmez le mot de passe'
+                    'label'=>'Confirmez le mot de passe',
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez confirmer le mot de passe.'
+                    ])
                 ],
 
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
                 'attr' => ['autocomplete' => 'new-password'],
-                // 'constraints' => [
-                //     new Regex([
-                //         'pattern'=>'/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
-                //         'message'=>"Le mot de passe doit contenir 14 caractères avec 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial. "
-                    
-                //     ]),
-                // ],
             ])
 
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,//permet de dire que cette propriete n'existe pas dans la bdd(elle n'est pas associée à une proprièté user de ce formulaire)
-                'label'=>'j\'accepte les conditions',
-                'row_attr'=>[
-                    'class'=>'shadow p-3 m-0'
-                ],
+                'label'=>'j\'accepte les conditions générales',
+                
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Veuillez accepter les conditions générales d\'utilisations.',
                     ]),
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
